@@ -1,6 +1,6 @@
 package by.htp.prediction.entity;
 
-public class Client {
+public class Client implements Comparable<Client>{
 	private String name;
 	
 	
@@ -17,6 +17,12 @@ public class Client {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public int compareTo(Client client) {
+		int result = this.name.compareTo(client.name);
+		return result;
 	}
 
 

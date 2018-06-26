@@ -25,12 +25,27 @@ public class MainApp {
 		for (String predication : listPredications) {
 			System.out.println(predication);
 		}
+		
 		System.out.println("****************************");
 		
-		GregorianCalendar gregorianCalendar = new GregorianCalendar();
+		GregorianCalendar gregorianCalendarR = new GregorianCalendar();
+//		gregorianCalendar.set(30, 12, 10);
 		
-		String testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendar);
+		String testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendarR);
+		System.out.println(testDivination);
+		ft.removeClientFromList(sasha);
+		
+//		gregorianCalendarR.set(2020, 12, 10);
+		
+		testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendarR);
+		ft.removeClientFromList(sasha);
 
+//		gregorianCalendarR.set(2020, 12, 10);
+//		
+		testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendarR);
+		
+
+		
 		System.out.println(testDivination);
 	}
 

@@ -12,6 +12,8 @@ import java.util.Set;
 public class FortuneTeller {
 	private LinkedHashMap<String, Queue<String>> divinations = new LinkedHashMap<>();
 	private PriorityQueue<Client> clients = new PriorityQueue<Client>();
+
+
 	private int maxClients = 10;
 	private int count = 0;
 	private GregorianCalendar gregorianCalendar = new GregorianCalendar();
@@ -45,17 +47,18 @@ public class FortuneTeller {
 	}
 
 	public Set<String> getPredications() {
-		return divinations.keySet();
+		Set<String> keys = divinations.keySet();
+		return keys;
 	}
 
-	public String getDivinationByPredication(String predication, Client client, GregorianCalendar gregorianCalendar) {
-		int week = gregorianCalendar.get(Calendar.WEEK_OF_YEAR);
-		int day = gregorianCalendar.get(Calendar.DATE);
+	public String getDivinationByPredication(String predication, Client client, GregorianCalendar gregorianCalendarRequest) {
+		int weekRequest = gregorianCalendarRequest.get(Calendar.WEEK_OF_YEAR);
+		int dayRequest = gregorianCalendarRequest.get(Calendar.DATE);
 
 		int currentWeek = this.gregorianCalendar.get(Calendar.WEEK_OF_YEAR);
 		int currentDay = this.gregorianCalendar.get(Calendar.DATE);
 
-		if (day == currentDay) {
+		if (dayRequest == currentDay) {
 			count = count + 1;
 		} else {
 			count = 0;
@@ -66,34 +69,42 @@ public class FortuneTeller {
 			return client.getName() + " was added in wait list!";
 		}
 
-		if (currentWeek == week) {
+		if (currentWeek == weekRequest) {
 			if (!clients.contains(client)) {
-				Queue<String> list = divinations.get(predication);
-				Queue<String> listCopy = new LinkedList<>(list);
-
-				Integer sizeList = listCopy.size();
-				int randomNumber = ((int) (Math.random() * sizeList)) - 1;
-				for (int i = 0; i < randomNumber; i++) {
-					listCopy.poll();
-				}
-				String result = listCopy.peek();
+				String result = doPredication(predication);
+				clients.add(client);
 				return result;
 			} else {
-				clients.add(client);
-				return client.getName() + "there is in wait list!";
+				return client.getName() + ", you are in the wait list!";
 			}
 		} else {
 			clients.clear();
-
-			Queue<String> list = divinations.get(predication);
-			Queue<String> listCopy = new LinkedList<>(list);
-			Integer sizeList = listCopy.size();
-			int randomNumber = ((int) (Math.random() * sizeList)) - 1;
-			for (int i = 0; i < randomNumber; i++) {
-				listCopy.poll();
-			}
-			String result = listCopy.peek();
+			
+			String result = doPredication(predication);
+			clients.add(client);
 			return result;
 		}
 	}
+	
+	public String doPredication(String predication) {
+		Queue<String> list = divinations.get(predication);
+		Queue<String> listCopy = new LinkedList<>(list);
+		Integer sizeList = listCopy.size();
+		int randomNumber = ((int) (Math.random() * sizeList)) - 1;
+		for (int i = 0; i < randomNumber; i++) {
+			listCopy.poll();
+		}
+		String result = listCopy.peek();
+		return result;
+	}
+	
+	public PriorityQueue<Client> getClients() {
+		return clients;
+	}
+	
+	public boolean removeClientFromList(Client client) {
+		boolean removeResult = clients.remove(client);
+		return removeResult;
+	}
+	
 }
