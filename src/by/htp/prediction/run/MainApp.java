@@ -31,22 +31,22 @@ public class MainApp {
 		GregorianCalendar gregorianCalendarR = new GregorianCalendar();
 //		gregorianCalendar.set(30, 12, 10);
 		
-		String testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendarR);
+		String testDivination = ft.getDivinationByPredication("love", sasha, gregorianCalendarR);
 		System.out.println(testDivination);
 		ft.removeClientFromList(sasha);
 		
 //		gregorianCalendarR.set(2020, 12, 10);
 		
-		testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendarR);
-		ft.removeClientFromList(sasha);
+//		testDivination = ft.getDivinationByPredication("love", sasha, gregorianCalendarR);
+//		ft.removeClientFromList(sasha);
 
 //		gregorianCalendarR.set(2020, 12, 10);
 //		
-		testDivination = ft.getDivinationByPredication("baby", sasha, gregorianCalendarR);
+//		testDivination = ft.getDivinationByPredication("love", sasha, gregorianCalendarR);
 		
 
 		
-		System.out.println(testDivination);
+//		System.out.println(testDivination);
 	}
 
 }

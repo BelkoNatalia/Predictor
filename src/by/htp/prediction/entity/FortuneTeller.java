@@ -20,21 +20,21 @@ public class FortuneTeller {
 
 	public FortuneTeller() {
 		Queue<String> loveList = new LinkedList<>();
-		loveList.add("No");
-		loveList.add("Yes");
-		loveList.add("Mayby");
-		loveList.add("No-1");
-		loveList.add("Yes-1");
-		loveList.add("Mayby-1");
+		loveList.add("You fall in love with you boss");
+		loveList.add("You find a love in the journey");
+		loveList.add("Your neighbor is in love with you ");
+		loveList.add("If you dress yellow shoes tomorrow you will meet your love ");
+		loveList.add("Love only on Wednesdays");
+		loveList.add("Fall in love and marry");
 		divinations.put("love", loveList);
 
 		Queue<String> babyList = new LinkedList<>();
-		babyList.add("One");
-		babyList.add("Two");
-		babyList.add("no baby");
-		babyList.add("One-1");
-		babyList.add("Two-1");
-		babyList.add("no baby-1");
+		babyList.add("Baby girl");
+		babyList.add("Baby boy");
+		babyList.add("Twins");
+		babyList.add("You will have 18 children ");
+		babyList.add("One boy and five girls");
+		babyList.add("One boy and one girl");
 		divinations.put("baby", babyList);
 	}
 
